@@ -192,21 +192,3 @@ implementation.
   warnings (Gatekeeper on macOS, SmartScreen on Windows) on end-user
   machines, which is expected for a portfolio project but would need a
   signing certificate for real distribution.
-
-## Suggested CV bullet points
-
-- Built a real-time monitoring dashboard (Next.js, TypeScript, Socket.io,
-  Recharts) streaming simulated IoT/trading/log data with sub-second
-  latency to 100+ concurrent chart updates without dropped frames, using
-  buffered/batched state updates and fixed-size sliding windows.
-- Implemented transition-based threshold alerting to avoid duplicate alert
-  spam, mirroring production alerting system design (Prometheus
-  Alertmanager-style suppression).
-- Designed a fully responsive control-room UI (mobile → desktop) with a
-  custom live system-load visualization (SVG waveform) as a distinctive UI
-  signature element.
-- Packaged the dashboard as a cross-platform desktop app with ElectronJS,
-  bundling the Socket.io backend to run inside Electron's own Node runtime
-  (no external Node.js dependency for end users) and using
-  `contextIsolation`/a minimal preload bridge instead of enabling
-  `nodeIntegration`.
