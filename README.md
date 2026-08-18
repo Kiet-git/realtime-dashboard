@@ -1,5 +1,9 @@
 # Ops Console — Real-time Monitoring Dashboard
 
+<img src="public/web.png" alt="web" />
+
+<img src="public/desktop.png" alt="desktop" />
+
 A full-stack real-time monitoring dashboard: simulated IoT sensors, a trading
 price feed, and service logs, streamed over Socket.io into a Next.js /
 TypeScript dashboard with live charts, threshold alerts, and a status
