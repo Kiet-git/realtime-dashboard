@@ -1,0 +1,57 @@
+{
+  "name": "realtime-dashboard-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ops Console packaged as a cross-platform desktop app with ElectronJS",
+  "main": "main.js",
+  "author": "Your Name",
+  "scripts": {
+    "dev": "cross-env ELECTRON_START_URL=http://localhost:3000 electron .",
+    "build:server": "npm run build --prefix ../server",
+    "build:web": "npm run build:electron --prefix ../web",
+    "prepackage": "npm run build:server && npm run build:web",
+    "package": "npm run prepackage && electron-builder",
+    "package:dir": "npm run prepackage && electron-builder --dir",
+    "package:win": "npm run prepackage && electron-builder --win",
+    "package:mac": "npm run prepackage && electron-builder --mac",
+    "package:linux": "npm run prepackage && electron-builder --linux"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^43.4.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "com.opsconsole.desktop",
+    "productName": "Ops Console",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "!**/*.map"
+    ],
+    "extraResources": [
+      { "from": "../server/dist", "to": "server" },
+      { "from": "../server/node_modules", "to": "server/node_modules" },
+      { "from": "../server/package.json", "to": "server/package.json" },
+      { "from": "../web/out", "to": "web/out" }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.icns",
+      "category": "public.app-category.developer-tools"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/icon.png",
+      "category": "Development"
+    }
+  }
+}
